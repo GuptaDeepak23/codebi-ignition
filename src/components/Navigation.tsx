@@ -30,9 +30,19 @@ const Navigation = () => {
           {/* Logo */}
           <div className="flex-shrink-0">
             <div className="flex items-center">
-              <div className="text-2xl font-bold text-foreground">
-                Code<span className="text-accent">Bi</span>
-              </div>
+              <video 
+                className="h-12 w-auto" 
+                autoPlay 
+                muted 
+                loop 
+                playsInline
+              >
+                <source src="/logo-video.mp4" type="video/mp4" />
+                {/* Fallback text logo */}
+                <div className="text-2xl font-bold text-foreground">
+                  Code<span className="text-accent">Bi</span>
+                </div>
+              </video>
             </div>
           </div>
 
