@@ -35,7 +35,7 @@ const Testimonials = () => {
   return (
     <section id="testimonials" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             What Our <span className="text-accent">Clients Say</span>
           </h2>
@@ -45,10 +45,11 @@ const Testimonials = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {testimonials.map((testimonial) => (
+          {testimonials.map((testimonial, index) => (
             <Card 
               key={testimonial.id} 
-              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden"
+              className="group hover:shadow-xl transition-all duration-300 hover:-translate-y-2 relative overflow-hidden card-hover animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Quote icon */}
               <div className="absolute top-6 right-6 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -94,10 +95,61 @@ const Testimonials = () => {
           <p className="text-sm text-muted-foreground mb-8">
             Trusted by 25+ companies worldwide
           </p>
-          <div className="flex justify-center items-center space-x-8 opacity-50">
-            <div className="text-2xl font-bold text-muted-foreground">Company A</div>
-            <div className="text-2xl font-bold text-muted-foreground">Company B</div>
-            <div className="text-2xl font-bold text-muted-foreground">Company C</div>
+          
+          {/* Enhanced CodeBi Marquee - Seamless Infinite */}
+          <div className="relative overflow-hidden bg-gradient-to-r from-accent/5 via-accent/15 to-accent/5 rounded-xl py-6 border border-accent/20 shadow-lg">
+            <div className="marquee-container">
+              <div className="marquee-track">
+                {/* First set of CodeBi */}
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                
+                {/* Duplicate set for seamless loop */}
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+                <span className="marquee-item text-3xl font-bold text-accent">CodeBi</span>
+              </div>
+            </div>
+            
+            {/* Subtle overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent pointer-events-none"></div>
           </div>
         </div>
       </div>

@@ -40,7 +40,7 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Get in <span className="text-accent">Touch</span>
           </h2>
@@ -51,8 +51,8 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Contact Info Cards */}
-          <div className="space-y-6">
-            <Card className="hover:shadow-lg transition-shadow">
+          <div className="space-y-6 animate-fade-in-left">
+            <Card className="hover:shadow-lg transition-shadow card-hover animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="bg-accent/10 p-3 rounded-full">
@@ -66,7 +66,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow card-hover animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="bg-accent/10 p-3 rounded-full">
@@ -80,7 +80,7 @@ const Contact = () => {
               </CardContent>
             </Card>
 
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow card-hover animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
               <CardContent className="p-6">
                 <div className="flex items-center space-x-4">
                   <div className="bg-accent/10 p-3 rounded-full">
@@ -95,12 +95,12 @@ const Contact = () => {
             </Card>
 
             {/* Business Hours */}
-            <Card className="hover:shadow-lg transition-shadow">
+            <Card className="hover:shadow-lg transition-shadow card-hover animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
               <CardHeader>
                 <CardTitle className="text-lg">Business Hours</CardTitle>
               </CardHeader>
               <CardContent className="pt-0">
-                <div className="space-y-2 text-sm">
+                <div className="space-y-0 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Monday - Friday</span>
                     <span className="text-foreground">9:00 AM - 6:00 PM</span>
@@ -119,8 +119,8 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="lg:col-span-2">
-            <Card className="hover:shadow-lg transition-shadow">
+          <div className="lg:col-span-2 animate-fade-in-right">
+            <Card className="hover:shadow-lg transition-shadow card-hover animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
               <CardHeader>
                 <CardTitle className="text-2xl">Send us a Message</CardTitle>
               </CardHeader>

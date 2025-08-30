@@ -103,11 +103,568 @@ All colors MUST be HSL.
     @apply border-border;
   }
 
-  body {
+  html, body {
     @apply bg-background text-foreground font-sans;
+    min-height: 100vh;
+  }
+
+  body {
+    background: hsl(var(--background));
   }
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-heading;
   }
+
+  /* Ensure all page containers have consistent background */
+  #root {
+    background: hsl(var(--background));
+    min-height: 100vh;
+  }
+
+  /* Ensure main page containers have consistent background */
+  .min-h-screen {
+    background: hsl(var(--background));
+  }
+
+  /* Ensure all sections have consistent background unless explicitly overridden */
+  section {
+    background: hsl(var(--background));
+  }
+
+  /* Ensure navigation and footer backgrounds are consistent */
+  nav, footer {
+    background: hsl(var(--background));
+  }
+
+  /* Override any component-specific backgrounds that might interfere */
+  .bg-secondary\/30 {
+    background: hsl(var(--background));
+  }
+
+  /* Ensure consistent background for all main content areas */
+  main, .main-content {
+    background: hsl(var(--background));
+  }
+
+  /* Add Hero-style background and decorative elements to all pages in light mode */
+  body:not(.dark) {
+    background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--background)) 50%, hsl(var(--accent) / 0.1) 100%);
+  }
+
+  /* Add decorative yellow circles to all pages */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Decorative circles positioned like in Hero */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Individual decorative circles */
+  .page-background-decoration {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .page-background-decoration::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 16px;
+    height: 16px;
+    background: hsl(var(--accent));
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 2s infinite;
+  }
+
+  .page-background-decoration::after {
+    content: '';
+    position: absolute;
+    top: 40%;
+    right: 20%;
+    width: 8px;
+    height: 8px;
+    background: hsl(var(--accent));
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 2s infinite 1s;
+  }
+
+  /* Additional decorative elements */
+  .page-background-decoration .circle-1 {
+    position: absolute;
+    bottom: 40%;
+    left: 20%;
+    width: 12px;
+    height: 12px;
+    background: hsl(var(--accent));
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 2s infinite 0.5s;
+  }
+
+  .page-background-decoration .circle-2 {
+    position: absolute;
+    bottom: 20%;
+    right: 10%;
+    width: 16px;
+    height: 16px;
+    background: hsl(var(--accent));
+    border-radius: 50%;
+    opacity: 0.2;
+    animation: pulse 2s infinite 1.5s;
+  }
+
+  /* Pulse animation for circles */
+  @keyframes pulse {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.4;
+      transform: scale(1.1);
+    }
+  }
+
+  /* Entrance animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInLeft {
+    from {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fadeInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes slideInFromTop {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.05);
+    }
+    70% {
+      transform: scale(0.9);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px hsl(var(--accent) / 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px hsl(var(--accent) / 0.8), 0 0 30px hsl(var(--accent) / 0.6);
+    }
+  }
+}
+
+@layer components {
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-container {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 40s linear infinite;
+  }
+
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .marquee-item {
+    flex-shrink: 0;
+    padding: 0 2rem;
+    transition: all 0.3s ease;
+  }
+
+  .marquee-item:hover {
+    transform: scale(1.1);
+    color: hsl(45 100% 70%);
+    text-shadow: 0 0 20px hsl(45 100% 60%);
+  }
+
+  /* Ensure footer is properly positioned and visible */
+  footer {
+    position: relative;
+    z-index: 10;
+    margin-top: auto;
+  }
+
+  /* Ensure page content takes full height */
+  .min-h-screen {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  /* Ensure footer sticks to bottom */
+  .min-h-screen > *:last-child {
+    margin-top: auto;
+  }
+
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Account for fixed navbar */
+  }
+
+  /* Ensure sections are properly positioned */
+  section[id] {
+    scroll-margin-top: 80px;
+  }
+
+  /* Animation utility classes */
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-left {
+    animation: fadeInLeft 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-right {
+    animation: fadeInRight 0.8s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.6s ease-out forwards;
+  }
+
+  .animate-slide-in-top {
+    animation: slideInFromTop 0.8s ease-out forwards;
+  }
+
+  .animate-bounce-in {
+    animation: bounceIn 1s ease-out forwards;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite;
+  }
+
+  /* Staggered animations */
+  .animate-stagger-1 { animation-delay: 0.1s; }
+  .animate-stagger-2 { animation-delay: 0.2s; }
+  .animate-stagger-3 { animation-delay: 0.3s; }
+  .animate-stagger-4 { animation-delay: 0.4s; }
+  .animate-stagger-5 { animation-delay: 0.5s; }
+
+  /* Hover animations */
+  .hover-lift {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .hover-scale {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hover-scale:hover {
+    transform: scale(1.05);
+  }
+
+  .hover-glow {
+    transition: all 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    box-shadow: 0 0 20px hsl(var(--accent) / 0.6);
+  }
+
+  /* Smooth transitions for all elements */
+  * {
+    transition: all 0.2s ease;
+  }
+
+  /* Enhanced button animations */
+  .btn-animate {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .btn-animate::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+  }
+
+  .btn-animate:hover::before {
+    left: 100%;
+  }
+
+  /* Enhanced hover effects */
+  .hover-rotate {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-rotate:hover {
+    transform: rotate(5deg);
+  }
+
+  .hover-bounce {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-bounce:hover {
+    transform: translateY(-5px);
+    animation: bounce 0.6s ease;
+  }
+
+  @keyframes bounce {
+    0%, 20%, 53%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40%, 43% {
+      transform: translateY(-8px);
+    }
+    70% {
+      transform: translateY(-4px);
+    }
+    90% {
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Gradient text animation */
+  .gradient-text {
+    background: linear-gradient(45deg, hsl(var(--accent)), hsl(var(--accent) / 0.8), hsl(var(--accent)));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease-in-out infinite;
+  }
+
+  @keyframes gradient-shift {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  /* Shimmer effect */
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .shimmer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+    animation: shimmer 2s infinite;
+  }
+
+  /* Loading spinner */
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid hsl(var(--accent) / 0.3);
+    border-top: 2px solid hsl(var(--accent));
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  /* Parallax effect */
+  .parallax {
+    transform: translateZ(0);
+    will-change: transform;
+  }
+
+  /* Smooth reveal animations */
+  .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+  }
+
+  .reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Enhanced card interactions */
+  .interactive-card {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .interactive-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at var(--mouse-x, center) var(--mouse-y, center), 
+                hsl(var(--accent) / 0.1) 0%, 
+                transparent 50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+
+  .interactive-card:hover::before {
+    opacity: 1;
+  }
+
+  /* Card hover effects */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+  }
+
+  /* Text reveal animation */
+  .text-reveal {
+    overflow: hidden;
+  }
+
+  .text-reveal span {
+    display: inline-block;
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  .text-reveal span:nth-child(1) { animation-delay: 0.1s; }
+  .text-reveal span:nth-child(2) { animation-delay: 0.2s; }
+  .text-reveal span:nth-child(3) { animation-delay: 0.3s; }
+  .text-reveal span:nth-child(4) { animation-delay: 0.4s; }
+  .text-reveal span:nth-child(5) { animation-delay: 0.5s; }
 }

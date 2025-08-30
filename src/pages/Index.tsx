@@ -9,7 +9,13 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      {/* Background decoration for all pages */}
+      <div className="page-background-decoration">
+        <div className="circle-1"></div>
+        <div className="circle-2"></div>
+      </div>
+      
       <Navigation />
       <Hero />
       <Services />

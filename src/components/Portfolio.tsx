@@ -56,7 +56,7 @@ const Portfolio = () => {
   return (
     <section id="portfolio" className="py-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Our <span className="text-accent">Portfolio</span>
           </h2>
@@ -66,10 +66,11 @@ const Portfolio = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <Card 
               key={project.id} 
-              className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 card-hover animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -117,7 +118,7 @@ const Portfolio = () => {
         </div>
 
         {/* Call to Action */}
-        <div className="text-center mt-16">
+        <div className="text-center mt-16 animate-fade-in-up animate-stagger-5">
           <p className="text-lg text-muted-foreground mb-6">
             Like what you see? Let's create something amazing together.
           </p>
@@ -126,7 +127,7 @@ const Portfolio = () => {
               const element = document.querySelector("#contact");
               if (element) element.scrollIntoView({ behavior: "smooth" });
             }}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors btn-animate hover-lift"
           >
             Start Your Project
           </button>

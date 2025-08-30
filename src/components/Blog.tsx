@@ -1,7 +1,10 @@
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
+  const navigate = useNavigate();
+  
   const blogPosts = [
     {
       id: 1,
@@ -45,16 +48,12 @@ const Blog = () => {
     },
   ];
 
-  const handleReadMore = (blogId: number) => {
-    // For now, just scroll to contact - in a real app, this would navigate to the blog post
-    console.log(`Navigate to blog post ${blogId}`);
-    // You can implement navigation to individual blog pages here
-  };
+
 
   return (
     <section id="blogs" className="py-20 bg-secondary/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 animate-fade-in-up">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4">
             Latest <span className="text-accent">Insights</span>
           </h2>
@@ -63,11 +62,12 @@ const Blog = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {blogPosts.map((post) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {blogPosts.slice(0, 2).map((post, index) => (
             <Card 
               key={post.id} 
-              className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+              className="group overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-2 card-hover animate-fade-in-up"
+              style={{ animationDelay: `${index * 0.2}s` }}
             >
               <div className="relative overflow-hidden">
                 <img
@@ -108,7 +108,7 @@ const Blog = () => {
                     By {post.author}
                   </span>
                   <button
-                    onClick={() => handleReadMore(post.id)}
+                    onClick={() => navigate(`/blog/${post.id}`)}
                     className="inline-flex items-center text-accent hover:text-accent/80 font-medium text-sm group/btn"
                   >
                     Read More
@@ -120,19 +120,16 @@ const Blog = () => {
           ))}
         </div>
 
-        {/* Call to Action */}
-        <div className="text-center mt-16">
+        {/* View More Button */}
+        <div className="text-center mt-16 animate-fade-in-up animate-stagger-5">
           <p className="text-lg text-muted-foreground mb-6">
-            Want to stay updated with our latest content?
+            Want to explore more insights and articles?
           </p>
           <button 
-            onClick={() => {
-              const element = document.querySelector("#contact");
-              if (element) element.scrollIntoView({ behavior: "smooth" });
-            }}
-            className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors"
+            onClick={() => navigate('/blogs')}
+            className="bg-accent hover:bg-accent/90 text-accent-foreground px-8 py-3 rounded-lg font-semibold transition-colors btn-animate hover-lift"
           >
-            Subscribe to Newsletter
+            View All Blogs
           </button>
         </div>
       </div>
