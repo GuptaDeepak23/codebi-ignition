@@ -6,7 +6,10 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { theme, setTheme } = useTheme();
+  const { theme, setTheme, resolvedTheme } = useTheme();
+  const [isdark , isdarkset] = useState(true);
+
+  // const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -76,24 +79,26 @@ const Navigation = () => {
     <nav className="sticky top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <div className="flex-shrink-0 animate-scale-in">
-            <div className="flex items-center">
-              <video 
-                className="h-12 w-auto" 
-                autoPlay 
-                muted 
-                loop 
-                playsInline
-              >
-                <source src="/logo-video.mp4" type="video/mp4" />
-                {/* Fallback text logo */}
-                <div className="text-2xl font-bold text-foreground">
-                  Code<span className="text-accent">Bi</span>
-                </div>
-              </video>
-            </div>
-          </div>
+          
+          
+          
+          
+         {/* Logo */}
+<div className="flex-shrink-0 animate-scale-in cursor-pointer" onClick={() => navigate("/")}>
+  <div className="flex items-center">
+    {resolvedTheme === "dark" ? (
+      <video className="h-12 w-auto" autoPlay muted loop playsInline>
+        <source src="/white.mp4" type="video/mp4" />
+      </video>
+    ) : (
+      <video className="h-12 w-auto" autoPlay muted loop playsInline>
+        <source src="/black.mp4" type="video/mp4" />
+      </video>
+    )}
+  </div>
+</div>
+
+
 
                      {/* Desktop Menu */}
                        <div className="hidden md:block animate-fade-in-up animate-stagger-1">

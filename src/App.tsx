@@ -9,6 +9,7 @@ import ServiceDetail from "./pages/ServiceDetail";
 import BlogList from "./pages/BlogList";
 import BlogPost from "./pages/BlogPost";
 import NotFound from "./pages/NotFound";
+import Chatbot from "@/components/Chatbot";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
+        <Chatbot />
       </TooltipProvider>
     </ThemeProvider>
   </QueryClientProvider>
